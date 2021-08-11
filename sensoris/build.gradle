@@ -1,0 +1,41 @@
+plugins {
+    id "java"
+    id "com.google.protobuf"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation "com.google.protobuf:protobuf-java:3.10.0"
+}
+
+protobuf {
+    // Configure the protoc executable
+    protoc {
+        // Download from repositories
+        artifact = "com.google.protobuf:protoc:3.10.0"
+    }
+
+    // Enable below code with "lite" option along with changing protobuf dependency to
+    // "com.google.protobuf:protobuf-javalite:3.10.0" to generate lite Java source code.
+    // However, doing so fails for now with following error:
+    // Execution failed for task ':sensoris:generateProto'.
+    // > protoc: stdout: . stderr: google/protobuf/descriptor.proto: File not found.
+    //  sensoris/protobuf/types/base.proto:21:1: Import "google/protobuf/descriptor.proto" was not found or had errors.
+    //  sensoris/protobuf/types/base.proto:28:8: "google.protobuf.FieldOptions" is not defined.
+    //  bosch/rs/cloud/vehicledata/sensoris/extension/protobuf/types/base.proto:21:1: Import "sensoris/protobuf/types/base.proto" was not found or had errors.
+    /*
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option "lite"
+                }
+            }
+        }
+    }
+     */
+}

@@ -1,0 +1,39 @@
+// Copyright (c) 2020 Robert Bosch GmbH and its subsidiaries. All rights reserved.
+
+// Robert Bosch proprietary extensions to SENSORIS spatial types.
+
+// Google Protocol Buffers Version 3
+syntax = "proto3";
+
+// Package name
+package bosch.rs.cloud.vehicledata.sensoris.extension.protobuf.types.spatial;
+
+// Options for code generation
+option cc_enable_arenas = true;
+option java_package = "com.bosch.rs.cloud.vehicledata.sensoris.extension.types.spatial";
+option java_outer_classname = "BoschSensorisExtensionSpatialTypes";
+option java_multiple_files = true;
+
+// Import SENSORIS message types.
+import "sensoris/protobuf/types/base.proto";
+
+//
+// Geographic elevation.
+//
+
+// Geographic elevation in reference to geoid.
+//
+// Extension is set for message type sensoris.protobuf.types.spatial.PositionAndAccuracy.
+//
+// In the SENSORIS specification altitude is used, see quote from SENSORIS Interface Architecture:
+// - Altitude is zero meters on the WGS84 reference ellipsoid.
+// - Elevation is derived from altitude and refers to the Earth Gravitational Model 1996 (EGM96) as geoid, which defines the nominal sea level surface.
+// - Positions in SENSORIS are given as longitude, latitude, and altitude.
+message GeographicElevation {
+    // Elevation.
+    //
+    // @unit Meter
+    // @resolution 0.001
+    // @range ( , )
+    .sensoris.protobuf.types.base.Int64Value elevation = 3 [(.sensoris.protobuf.types.base.exponent) = 3];
+}

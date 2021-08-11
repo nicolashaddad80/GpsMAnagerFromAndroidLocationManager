@@ -1,0 +1,31 @@
+// Copyright (c) 2020 Robert Bosch GmbH and its subsidiaries. All rights reserved.
+
+// Robert Bosch proprietary extensions to SENSORIS spatial types.
+
+// Google Protocol Buffers Version 3
+syntax = "proto3";
+
+// Package name
+package bosch.rs.cloud.vehicledata.sensoris.extension.protobuf.categories.objectdetection;
+
+// Options for code generation
+option cc_enable_arenas = true;
+option java_package = "com.bosch.rs.cloud.vehicledata.sensoris.extension.categories.objectdetection";
+option java_outer_classname = "BoschSensorisExtensionObjectDetectionCategory";
+option java_multiple_files = true;
+
+//
+// RADAR Road Signature 4 k blocks.
+//
+
+// RADAR Road Signature 4 k blocks.
+message RadarRoadSignature4KBlocks {
+  // RADAR Road Signature 4 k block.
+  message Block {
+    // 4 k block.
+    bytes block = 1;
+  }
+
+  // RADAR Road Signature 4 k block.
+  repeated Block block = 1;
+}

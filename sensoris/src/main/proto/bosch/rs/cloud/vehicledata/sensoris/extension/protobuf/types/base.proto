@@ -1,0 +1,36 @@
+// Copyright (c) 2020 Robert Bosch GmbH and its subsidiaries. All rights reserved.
+
+// Robert Bosch proprietary extensions to SENSORIS spatial types.
+
+// Google Protocol Buffers Version 3
+syntax = "proto3";
+
+// Package name
+package bosch.rs.cloud.vehicledata.sensoris.extension.protobuf.types.base;
+
+// Options for code generation
+option cc_enable_arenas = true;
+option java_package = "com.bosch.rs.cloud.vehicledata.sensoris.extension.types.base";
+option java_outer_classname = "BoschSensorisExtensionBaseTypes";
+option java_multiple_files = true;
+
+// Import Google message types.
+import "google/protobuf/wrappers.proto";
+
+// Import SENSORIS message types.
+import "sensoris/protobuf/types/base.proto";
+
+//
+// Path base types.
+//
+
+// Type URL of proprietary extension.
+message ExtensionTypeUrl {
+  oneof type {
+    // Type URL of proprietary extension as suffix of default Google type URL 'type.googleapis.com/'.
+    google.protobuf.StringValue google_type_url_suffix = 1;
+
+    // Full type URL of proprietary extension.
+    google.protobuf.StringValue type_url = 2;
+  }
+}

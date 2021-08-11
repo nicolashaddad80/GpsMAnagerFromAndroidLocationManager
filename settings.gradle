@@ -1,0 +1,4 @@
+rootProject.name = "BoschRadar"
+include ':app'
+include ':core'
+include ':sensoris'
